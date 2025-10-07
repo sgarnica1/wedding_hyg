@@ -214,7 +214,7 @@ export const GUESTS: GuestsType = {
     members: ["Jonathan", "Gaby", "Maria"],
   },
   "fam-garnica": {
-    name: "Sergio, Tere, Emilio , Diego",
+    name: "Sergio, Tere, Emilio & Diego",
     members: ["Sergio", "Tere", "Emilio", "Diego"],
   }
 };
