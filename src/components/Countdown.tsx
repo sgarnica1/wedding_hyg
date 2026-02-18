@@ -38,9 +38,8 @@ const Countdown = () => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
       className='w-full bg-accent py-6 px-4'
     >
       <div className='flex flex-row gap-4 md:gap-6 items-end justify-center'>
