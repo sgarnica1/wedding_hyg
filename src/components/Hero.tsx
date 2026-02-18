@@ -9,8 +9,8 @@ const Hero = () => {
     offset: ['start start', 'end start']
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
     <div ref={ref} className='relative overflow-hidden'>
