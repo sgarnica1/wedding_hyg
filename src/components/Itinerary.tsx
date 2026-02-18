@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import ItineraryBg from '../assets/images/itinerary_bg.png';
 import ItineraryBg2 from '../assets/images/itinerary_bg_2.png';
 
@@ -25,17 +26,32 @@ const Itinerary = () => {
   ]
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.8 }}
       className='flex flex-col justify-center items-center h-[600px] bg-cover bg-center bg-no-repeat relative'
       style={{ backgroundImage: `url(${ItineraryBg})` }}
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
         className='flex flex-col justify-center items-start h-[500px] w-[90%] mx-auto p-8 bg-cover bg-center bg-no-repeat'
         style={{ backgroundImage: `url(${ItineraryBg2})` }}
       >
         <div className='w-full space-y-8 flex flex-col justify-between items-center'>
           {acts.map((act, actIndex) => (
-            <div key={actIndex} className='w-full'>
+            <motion.div
+              key={actIndex}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: actIndex * 0.2, ease: 'easeOut' }}
+              className='w-full'
+            >
               <h2 className='text-accent font-primary text-2xl md:text-4xl font-bold uppercase mb-2 text-center'>
                 {act.title}
               </h2>
@@ -55,11 +71,11 @@ const Itinerary = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   )
 }
 

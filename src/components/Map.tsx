@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import BedfordImage from '../assets/images/beford.jpeg'
@@ -5,14 +6,33 @@ import BedfordImage from '../assets/images/beford.jpeg'
 const Map = () => {
   const [showBedfordImage, setShowBedfordImage] = useState(false)
   return (
-    <div className='flex flex-col justify-center items-center pt-20 pb-30 w-full'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.8 }}
+      className='flex flex-col justify-center items-center pt-20 pb-30 w-full'
+    >
       <div className='flex flex-col justify-center items-center max-w-md w-full px-6'>
-        <h2 className='text-accent font-primary text-3xl md:text-4xl uppercase mb-10 text-center font-bold'>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className='text-accent font-primary text-3xl md:text-4xl uppercase mb-10 text-center font-bold'
+        >
           Ubicación & Hospedaje
-        </h2>
+        </motion.h2>
 
         <div className='flex flex-col gap-6 w-full max-w-[500px]'>
-          <div className='flex flex-col justify-center items-center bg-accent rounded-lg py-8 px-6'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className='flex flex-col justify-center items-center bg-accent rounded-lg py-8 px-6'
+          >
             <h3 className='text-white font-primary text-3xl md:text-3xl font-bold uppercase mb-2 text-center'>
               Ceremonia
             </h3>
@@ -27,9 +47,16 @@ const Map = () => {
               Blvd. Villas del Meson 56,<br />
               76226 Juriquilla, Qro.
             </Link>
-          </div>
+          </motion.div>
 
-          <div className='flex flex-col justify-center items-center bg-[#A8B89A] rounded-lg py-8 px-6'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+            className='flex flex-col justify-center items-center bg-[#A8B89A] rounded-lg py-8 px-6'
+          >
             <h3 className='text-black font-primary text-3xl md:text-3xl font-bold uppercase mb-2 text-center'>
               Fiesta
             </h3>
@@ -44,9 +71,16 @@ const Map = () => {
               Avenida Paseo de la República. 11555-B El Salitre,<br />
               76127 Santiago de Querétaro, Qro.
             </Link>
-          </div>
+          </motion.div>
 
-          <div className='flex flex-col justify-center items-center bg-[#f5f5f5] rounded-lg py-8 px-6'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            className='flex flex-col justify-center items-center bg-[#f5f5f5] rounded-lg py-8 px-6'
+          >
             <h3 className='text-accent font-primary text-3xl md:text-3xl font-bold uppercase mb-2 text-center'>
               Hospedaje
             </h3>
@@ -66,12 +100,15 @@ const Map = () => {
             >
               Click aquí para conocer las tarifas por convenio
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {showBedfordImage && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
           onClick={() => setShowBedfordImage(false)}
         >
@@ -89,9 +126,9 @@ const Map = () => {
               onClick={(e) => e.stopPropagation()}
             />
           </div>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

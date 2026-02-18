@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { collection, addDoc, getDocs, query, where, updateDoc, doc } from 'firebase/firestore';
+import confetti from 'canvas-confetti';
 import { db, collectionName } from '../services/firebase';
 import ErrorMessage from './ErrorMessage';
 import { FamilyType } from '../utils/types';
@@ -122,12 +123,46 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
         specialRequest,
       };
 
+      // Check if at least one member is attending
+      const hasAttendingMembers = rsvpData.members.some((m: MemberRsvp) => m.attending);
+
       if (isUpdating && existingRsvpId) {
         // Update existing document
         await updateDoc(doc(db, collectionName, existingRsvpId), data);
       } else {
         // Create new document
         await addDoc(collection(db, collectionName), data);
+      }
+
+      // Trigger confetti if at least one member is attending
+      if (hasAttendingMembers) {
+        const duration = 3000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min: number, max: number) {
+          return Math.random() * (max - min) + min;
+        }
+
+        const interval: NodeJS.Timeout = setInterval(function () {
+          const timeLeft = animationEnd - Date.now();
+
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+
+          const particleCount = 50 * (timeLeft / duration);
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+          });
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+          });
+        }, 250);
       }
 
       setSuccess(true);
