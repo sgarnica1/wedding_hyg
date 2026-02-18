@@ -97,6 +97,65 @@ html {
   transition: 0s;
 }
 
+/* Custom Checkbox Styles */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #596854;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.custom-checkbox:hover {
+  border-color: #596854;
+  background-color: #f9f9f9;
+  transform: scale(1.05);
+}
+
+.custom-checkbox:checked {
+  background-color: #596854;
+  border-color: #596854;
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  animation: checkmark 0.3s ease;
+}
+
+@keyframes checkmark {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.custom-checkbox:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(89, 104, 84, 0.2);
+}
+
 /* Toast animation */
 @keyframes fadeIn {
   from {

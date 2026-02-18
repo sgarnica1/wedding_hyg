@@ -229,30 +229,39 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
       <form onSubmit={handleRsvpSubmit}>
         {/* Render members of the selected family */}
         <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-4 text-secondary">
+          <h3 className="text-2xl mb-4 text-accent font-primary font-bold">
             {isUpdating ? 'Actualiza tu asistencia' : 'Confirma asistencia'}
           </h3>
-          <p className='mb-6 text-md'>Por favor, selecciona a los invitados que asistirán:</p>
-          <div className="space-y-4">
+          <p className='mb-6 text-md font-secondary font-semibold'>Por favor, selecciona a los invitados que asistirán:</p>
+          <div className="space-y-0">
             {family.members.map((member: string) => (
-              <div key={member} className="flex items-center">
+              <motion.div
+                key={member}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+              >
                 <input
                   type="checkbox"
                   checked={rsvps[familyKey][member]}
                   onChange={() => handleCheckboxChange(familyKey, member)}
                   id={`${familyKey}-${member}`}
-                  className="mr-3 h-5 w-5"
+                  className="custom-checkbox"
                 />
-                <label htmlFor={`${familyKey}-${member}`} className="text-lg">
+                <label
+                  htmlFor={`${familyKey}-${member}`}
+                  className="text-lg font-secondary cursor-pointer flex-1 select-none"
+                >
                   {member}
                 </label>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-secondary mb-2">Peticiones especiales o restricciones alimenticias</label>
+          <label className="block mb-2 font-secondary font-semibold">Peticiones especiales o restricciones alimenticias</label>
           <textarea
             className="block w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary"
             value={specialRequest}
@@ -271,7 +280,7 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
           type="submit"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-3 px-4 text-white bg-accent hover:bg-accent/80 hover:cursor-pointer transition duration-300 rounded text-lg font-medium uppercase button-ripple shadow-lg"
+          className="w-full py-3 px-4 text-white bg-accent hover:bg-accent/80 hover:cursor-pointer transition duration-300 rounded text-sm font-medium uppercase button-ripple shadow-lg"
           disabled={loading}
         >
           {loading
