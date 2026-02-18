@@ -24,7 +24,7 @@ const DressCodeGifts = () => {
           className='w-full flex justify-between items-start relative mb-8'
         >
           <div className='flex flex-col items-start pl-5 pt-10'>
-            <h2 className='text-accent font-primary text-2xl md:text-3xl font-bold uppercase leading-[0.8]'>
+            <h2 className='text-accent font-primary text-2xl md:text-3xl font-bold uppercase leading-[0.8] text-shadow-md'>
               Código de vestimenta
             </h2>
             <p className='text-accent font-primary text-sm md:text-lg mb-4 uppercase'>
@@ -59,7 +59,7 @@ const DressCodeGifts = () => {
             className='h-[350px] ml-[-30px] sm:ml-0'
           />
           <div className='flex flex-col pr-5 pt-10 pl-5 sm:pl-0'>
-            <h2 className='text-accent font-primary text-2xl md:text-3xl font-bold uppercase leading-[0.8]'>
+            <h2 className='text-accent font-primary text-2xl md:text-3xl font-bold uppercase leading-[0.8] text-shadow-md'>
               Mesa de regalos
             </h2>
             <p className='font-secondary font-light text-xs md:text-base mt-5 mb-6'>Su presencia es nuestro mejor regalo. Agradecemos su generosidad.</p>
@@ -69,14 +69,19 @@ const DressCodeGifts = () => {
             <p className='text-accent font-primary text-2xl md:text-3xl font-bold mb-6 uppercase'>
               51950244
             </p>
-            <Link
-              to={'https://mesaderegalos.liverpool.com.mx/milistaderegalos/51950244'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex justify-center items-center font-secondary font-normal text-white bg-accent text-sm md:text-base py-2 px-6 rounded hover:bg-accent/80 transition duration-300 max-w-[120px] uppercase"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              VER
-            </Link>
+              <Link
+                to={'https://mesaderegalos.liverpool.com.mx/milistaderegalos/51950244'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex justify-center items-center font-secondary font-normal text-white bg-accent text-sm md:text-base py-2 px-6 rounded hover:bg-accent/80 transition duration-300 max-w-[120px] uppercase button-ripple shadow-lg"
+              >
+                VER
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>

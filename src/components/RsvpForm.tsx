@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { collection, addDoc, getDocs, query, where, updateDoc, doc } from 'firebase/firestore';
 import confetti from 'canvas-confetti';
 import { db, collectionName } from '../services/firebase';
@@ -266,9 +267,11 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
           Adoramos a tus pequeños, sin embargo, por la naturaleza del evento y normativas del lugar este evento está destinado solo para adultos ¡Esperamos tu comprensión!
         </p>
 
-        <button
+        <motion.button
           type="submit"
-          className="w-full py-3 px-4 text-white bg-accent hover:bg-accent/80 hover:cursor-pointer transition duration-300 rounded text-lg font-medium uppercase"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full py-3 px-4 text-white bg-accent hover:bg-accent/80 hover:cursor-pointer transition duration-300 rounded text-lg font-medium uppercase button-ripple shadow-lg"
           disabled={loading}
         >
           {loading
@@ -276,7 +279,7 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
             : isUpdating
               ? 'Editar Asistencia'
               : 'Confirmar Asistencia'}
-        </button>
+        </motion.button>
       </form>
     </div>
   );

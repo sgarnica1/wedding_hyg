@@ -43,7 +43,7 @@ const Invite = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className='text-accent font-primary text-sm md:text-base mb-4 text-center font-semibold uppercase'
+          className='text-accent font-primary text-sm md:text-base mb-4 text-center font-semibold uppercase text-shadow-sm'
         >
           Nos complace invitarlos a celebrar con nosotros
         </motion.p>
@@ -52,7 +52,7 @@ const Invite = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className='text-accent font-primary text-4xl sm:text-5xl font-light leading-[0.9] mb-6 text-center uppercase'
+          className='text-accent font-primary text-4xl sm:text-5xl font-light leading-[0.9] mb-6 text-center uppercase text-shadow-md'
         >
           {familyName}
         </motion.h2>
@@ -66,7 +66,7 @@ const Invite = () => {
         >
           <Link
             to={`/rsvp/${familyKey}`}
-            className="flex justify-center items-center font-secondary text-white bg-accent text-sm md:text-base py-3 px-16 rounded hover:bg-accent/80 transition duration-300 uppercase mb-4 font-light"
+            className="flex justify-center items-center font-secondary text-white bg-accent text-sm md:text-base py-3 px-16 rounded hover:bg-accent/80 transition duration-300 uppercase mb-4 font-light button-ripple shadow-lg"
           >
             Confirmar
           </Link>

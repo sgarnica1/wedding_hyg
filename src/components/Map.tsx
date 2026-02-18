@@ -19,7 +19,7 @@ const Map = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className='text-accent font-primary text-3xl md:text-4xl uppercase mb-10 text-center font-bold'
+          className='text-accent font-primary text-3xl md:text-4xl uppercase mb-10 text-center font-bold text-shadow-md'
         >
           Ubicación & Hospedaje
         </motion.h2>
@@ -94,12 +94,14 @@ const Map = () => {
             >
               Ubicación
             </Link>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setShowBedfordImage(true)}
               className="text-accent font-secondary text-sm md:text-base text-center underline hover:opacity-80 transition mt-10 font-normal cursor-pointer bg-transparent border-none"
             >
               Click aquí para conocer las tarifas por convenio
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>

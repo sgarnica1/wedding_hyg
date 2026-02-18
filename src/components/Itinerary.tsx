@@ -52,10 +52,10 @@ const Itinerary = () => {
               transition={{ duration: 0.6, delay: actIndex * 0.2, ease: 'easeOut' }}
               className='w-full'
             >
-              <h2 className='text-accent font-primary text-2xl md:text-4xl font-bold uppercase mb-2 text-center'>
+              <h2 className='text-accent font-primary text-2xl md:text-4xl font-bold uppercase mb-2 text-center text-shadow-md'>
                 {act.title}
               </h2>
-              <p className='text-accent font-primary text-lg md:text-xl mb-3 text-center'>
+              <p className='text-accent font-primary text-lg md:text-xl mb-3 text-center text-shadow-sm'>
                 {act.location}
               </p>
               <div className='w-full h-px bg-accent/30 mb-4'></div>
