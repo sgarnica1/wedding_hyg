@@ -11,14 +11,14 @@ module.exports = {
       colors: {
         primary: "#414141",
         secondary: "#727272",
-        accent: "#5C724A",
+        accent: "#596854",
         "bg-primary": "#F6F5EF",
         "bg-secondary": "#F0F0F0",
         "button": "#DCD7B7",
       },
       fontFamily: {
-        primary: ['AbrahamLincoln', 'sans-serif'],
-        secondary: ['Didot', 'sans-serif'],
+        primary: ['Cormorant Garamond', 'serif'],
+        secondary: ['Stack Sans Headline', 'sans-serif'],
         abhaya: ['Abhaya', 'sans-serif']
       }
     }

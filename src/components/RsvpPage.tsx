@@ -20,7 +20,6 @@ const RsvpPage: React.FC = () => {
         )}
         {familyKey && family && (
           <>
-            <p className='text-xl md:text-2xl text-center text-secondary mb-6'>{family.name}</p>
             <RsvpForm family={family} familyKey={familyKey} />
           </>
         )}

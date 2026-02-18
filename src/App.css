@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Stack+Sans+Headline:wght@200..700&display=swap');
 @import 'tailwindcss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @theme {
-  --font-primary: 'Lora', sans-serif;
-  --font-secondary: "Josefin Sans", sans-serif;
+  --font-primary: 'Cormorant Garamond', serif;
+  --font-secondary: "Stack Sans Headline", sans-serif;
 
   --color-primary: #f6f5ef;
   --color-secondary: #413d3a;
-  --color-accent: #96493F;
+  --color-accent: #596854;
 
   --color-bg-primary: #96493F;
   --color-bg-secondary: #f6f5ef;
@@ -24,7 +23,7 @@
   padding: 0 auto;
   box-sizing: border-box;
 
-  font-family: 'Lora', serif;
+  font-family: 'Stack Sans Headline', sans-serif;
   line-height: 1.5;
   font-weight: 600;
 

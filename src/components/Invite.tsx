@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { GUESTS } from '../utils/guests'
 import { FamilyType, GuestsType } from '../utils/types'
+import InviteBg from '../assets/images/invite_bg.png'
 
 const Invite = () => {
   const { id: familyKey } = useParams()
@@ -17,19 +18,32 @@ const Invite = () => {
   }
 
   return (
-    <section className='flex flex-col items-center justify-center py-10 md:py-10 px-4 mx-auto'>
-      <div className='flex flex-col justify-center items-start bg-bg-primary rounded-lg w-[90%] max-w-[500px] py-10 px-6'>
-        <h2 className='text-[2rem] sm:text-4xl font-thin font-primary leading-[0.8] text-primary uppercase mb-6'>{familyName}</h2>
-        <p className='text-primary font-secondary font-thin text-md md:text-sm mb-6'>
-          Por favor, confirma antes del <span className='font-semibold'>14 de septiembre del 2025</span>
+    <section className='flex flex-col items-center justify-center h-[750px] px-4 mx-auto bg-accent'>
+      <div
+        className='flex flex-col justify-between items-center w-[90%] max-w-[500px] pt-20 pb-6 px-6 bg-cover bg-center bg-no-repeat'
+        style={{
+          backgroundImage: `url(${InviteBg})`,
+          borderRadius: '50% 50% 0 0 / 30% 30% 0 0',
+          minHeight: '400px'
+        }}
+      >
+        <p className='text-accent font-primary text-sm md:text-base mb-4 text-center font-semibold uppercase'>
+          Nos complace invitarlos a celebrar con nosotros
         </p>
+        <h2 className='text-accent font-primary text-4xl sm:text-5xl font-light leading-[0.9] mb-6 text-center uppercase'>{familyName}</h2>
         <Link
           to={`/rsvp/${familyKey}`}
-          className="flex justify-center items-center font-secondary text-primary text-md py-3 px-4 md:px-5 md:text-base border-1 hover:bg-bg-primary hover:border-bg-secondary hover:text-white hover:cursor-pointer transition duration-300 rounded max-w-lg"
+          className="flex justify-center items-center font-secondary text-white bg-accent text-sm md:text-base py-3 px-6 rounded hover:bg-accent/80 transition duration-300 uppercase mb-4 font-light"
         >
-          Confirmar asistencia
+          Confirmar
         </Link>
+        <p className='text-accent font-primary text-xs md:text-sm text-center font-semibold uppercase'>
+          Favor de confirmar su asistencia antes del <span className='font-medium'>30 de marzo</span>
+        </p>
       </div>
+      <p className='text-white font-secondary text-xs md:text-sm text-center px-4 mt-6 max-w-[500px] font-light'>
+        Adoramos a tus pequeños, sin embargo, por la naturaleza del evento y normativas del lugar este evento está destinado solo para adultos ¡Esperamos tu comprensión!
+      </p>
     </section>
   )
 }

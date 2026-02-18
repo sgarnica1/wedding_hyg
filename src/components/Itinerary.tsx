@@ -1,59 +1,59 @@
-import ItineraryTitle from '../assets/icons/itinerary-title.svg';
-import ChurchIcon from '../assets/icons/church.svg';
-import StarsIcon from '../assets/icons/stars.svg';
-import DishesIcon from '../assets/icons/dishes.svg';
-import DanceIcon from '../assets/icons/dance.svg';
-import ClockIcon from '../assets/icons/clock.svg';
-import CoctailIcon from '../assets/icons/coctail.svg';
+import ItineraryBg from '../assets/images/itinerary_bg.png';
+import ItineraryBg2 from '../assets/images/itinerary_bg_2.png';
 
 const Itinerary = () => {
 
-  const ItineraryData = [
+  const acts = [
     {
-      title: 'Recepción',
-      time: '4:40 PM',
-      icon: StarsIcon
+      title: 'PRIMER ACTO',
+      location: 'Hotel Misión Juriquilla',
+      events: [
+        { time: '4:00 PM', description: 'Bienvenida' },
+        { time: '4:30 PM', description: 'Ceremonia' }
+      ]
     },
     {
-      title: '¡Sí, acepto!',
-      time: '5:00 PM',
-      icon: ChurchIcon
-    },
-    {
-      title: 'Cóctel',
-      time: '6:00 PM',
-      icon: CoctailIcon
-    },
-    {
-      title: 'Cena',
-      time: '7:00 PM',
-      icon: DishesIcon
-    },
-    {
-      title: 'Baile',
-      time: '10:30 PM',
-      icon: DanceIcon
-    },
-    {
-      title: 'Fin',
-      time: '1:00 AM',
-      icon: ClockIcon
-    },
+      title: 'SEGUNDO ACTO',
+      location: 'Salón Casa Mila',
+      events: [
+        { time: '6:00 PM', description: 'Recepción' },
+        { time: '7:30 PM', description: 'Cena' },
+        { time: '10:00 PM', description: 'Baile' },
+        { time: '1:00 AM', description: 'Cierre' }
+      ]
+    }
   ]
 
   return (
-    <section className='flex flex-col justify-center items-center py-10 px-6'>
-      <div className='flex flex-col justify-center items-centermax-w-[500px] mx-auto'>
-        <img src={ItineraryTitle} alt="Itinerary" className='w-full mb-12' />
-        <div className='grid grid-cols-1 gap-8'>
-          {ItineraryData.map((item, index) => (
-            <div key={index} className='grid grid-cols-[2fr_3fr] gap-10 sm:gap-10'>
-              <div className='flex items-end w-full justify-end'>
-                <img src={item.icon} alt={item.title} className='w-12 h-12' />
-              </div>
-              <div className='text-accent uppercase font-primary font-medium flex flex-col justify-center'>
-                <p className='text-xl'>{item.time}</p>
-                <h3 className='text-md text-black font-light font-secondary'>{item.title}</h3>
+    <section
+      className='flex flex-col justify-center items-center h-[600px] bg-cover bg-center bg-no-repeat relative'
+      style={{ backgroundImage: `url(${ItineraryBg})` }}
+    >
+      <div
+        className='flex flex-col justify-center items-start h-[500px] w-[90%] mx-auto p-8 bg-cover bg-center bg-no-repeat'
+        style={{ backgroundImage: `url(${ItineraryBg2})` }}
+      >
+        <div className='w-full space-y-8 flex flex-col justify-between items-center'>
+          {acts.map((act, actIndex) => (
+            <div key={actIndex} className='w-full'>
+              <h2 className='text-accent font-primary text-2xl md:text-4xl font-bold uppercase mb-2 text-center'>
+                {act.title}
+              </h2>
+              <p className='text-accent font-primary text-lg md:text-xl mb-3 text-center'>
+                {act.location}
+              </p>
+              <div className='w-full h-px bg-accent/30 mb-4'></div>
+              <div className='space-y-3'>
+                {act.events.map((event, eventIndex) => (
+                  <div key={eventIndex} className='flex justify-between items-center'>
+                    <p className='text-accent font-primary font-bold italic text-lg md:text-lg'>
+                      {event.description}
+                    </p>
+                    <p className='text-accent font-secondary font-light text-base md:text-lg'>
+                      {event.time}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

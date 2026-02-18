@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { collection, addDoc, getDocs, query, where, updateDoc, doc } from 'firebase/firestore';
 import { db, collectionName } from '../services/firebase';
 import ErrorMessage from './ErrorMessage';
@@ -22,11 +22,10 @@ interface MemberRsvp {
 
 const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
   const [rsvps, setRsvps] = useState<RsvpState>(() => {
-    // Initialize the state with members set to 'true' (attending)
+    // Initialize the state with members set to 'false' (not attending by default)
     const initialState: RsvpState = {};
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    initialState[familyKey] = family.members.reduce((acc: any, member: string) => {
-      acc[member] = true; // Default all members to attending
+    initialState[familyKey] = family.members.reduce((acc: { [key: string]: boolean }, member: string) => {
+      acc[member] = false; // Default all members to not attending
       return acc;
     }, {});
     return initialState;
@@ -41,49 +40,66 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
 
-  const fetchExistingRsvp = async () => {
+  const fetchExistingRsvp = useCallback(async () => {
+    if (!familyKey || !family.members || family.members.length === 0) {
+      setDataLoaded(true);
+      return;
+    }
+
     setLoading(true);
+    setError(null);
     try {
       // Create a query to find RSVP with matching id
       const rsvpQuery = query(collection(db, collectionName), where('rsvpData.id', '==', familyKey));
       const querySnapshot = await getDocs(rsvpQuery);
 
+      console.log('Query snapshot size:', querySnapshot.size);
+
       if (!querySnapshot.empty) {
         // We found an existing RSVP
         const existingRsvp = querySnapshot.docs[0];
         const rsvpData = existingRsvp.data();
+        console.log('Found existing RSVP:', rsvpData);
 
         // Update state with the existing RSVP data
-        const updatedRsvps: RsvpState = { ...rsvps };
-        updatedRsvps[familyKey] = family.members.reduce((acc: any, member: string) => {
-          // Find the member in the existing RSVP data
-          const memberData = rsvpData.rsvpData.members.find(
-            (m: MemberRsvp) => m.name === member
-          );
+        setRsvps((prevRsvps) => {
+          const updatedRsvps: RsvpState = { ...prevRsvps };
+          updatedRsvps[familyKey] = family.members.reduce((acc: { [key: string]: boolean }, member: string) => {
+            // Find the member in the existing RSVP data
+            const memberData = rsvpData.rsvpData?.members?.find(
+              (m: MemberRsvp) => m.name === member
+            );
 
-          // Set attending status from existing data or default to true
-          acc[member] = memberData ? memberData.attending : true;
-          return acc;
-        }, {});
+            // Set attending status from existing data or default to false
+            acc[member] = memberData ? memberData.attending : false;
+            return acc;
+          }, {});
+          return updatedRsvps;
+        });
 
-        setRsvps(updatedRsvps);
         setSpecialRequest(rsvpData.specialRequest || '');
         setExistingRsvpId(existingRsvp.id);
         setIsUpdating(true);
+      } else {
+        console.log('No existing RSVP found');
       }
     } catch (err) {
       console.error("Error fetching existing RSVP:", err);
-      setError("Error al cargar datos existentes. Por favor, intenta de nuevo.");
+      const errorMessage = err instanceof Error ? err.message : 'Error desconocido';
+      setError(`Error al cargar datos existentes: ${errorMessage}`);
     } finally {
       setLoading(false);
       setDataLoaded(true);
     }
-  };
+  }, [familyKey, family.members]);
 
   // Fetch existing RSVP data if any
   useEffect(() => {
-    fetchExistingRsvp();
-  }, [familyKey, family.members, refetch]);
+    if (familyKey && family.members && family.members.length > 0) {
+      fetchExistingRsvp();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [familyKey, fetchExistingRsvp, refetch]);
 
   const handleRsvpSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -167,6 +183,13 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
 
   return (
     <div className="w-full p-6 bg-white shadow-lg rounded-lg">
+      {isUpdating && (
+        <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
+          <p className="text-accent font-secondary text-sm md:text-base font-normal">
+            Ya has confirmado tu asistencia anteriormente. Puedes editar tu respuesta a continuación.
+          </p>
+        </div>
+      )}
       <form onSubmit={handleRsvpSubmit}>
         {/* Render members of the selected family */}
         <div className="mb-6">
@@ -204,9 +227,13 @@ const RsvpForm: React.FC<RsvpProps> = ({ family, familyKey }: RsvpProps) => {
 
         {error && <ErrorMessage message={error} />}
 
+        <p className='mb-8 text-sm text-secondary font-secondary font-light'>
+          Adoramos a tus pequeños, sin embargo, por la naturaleza del evento y normativas del lugar este evento está destinado solo para adultos ¡Esperamos tu comprensión!
+        </p>
+
         <button
           type="submit"
-          className="w-full py-3 px-4 border-2 border-black hover:bg-primary hover:text-white hover:cursor-pointer transition duration-300 rounded text-lg font-medium"
+          className="w-full py-3 px-4 text-white bg-accent hover:bg-accent/80 hover:cursor-pointer transition duration-300 rounded text-lg font-medium uppercase"
           disabled={loading}
         >
           {loading
