@@ -22,7 +22,7 @@ const CopyInviteButton = ({ familyId }: { familyId: string }) => {
         <button
             type="button"
             onClick={handleCopy}
-            className="inline-flex items-center gap-2 text-sm font-medium rounded-lg bg-white text-accent hover:bg-accent/90 transition-colors shrink-0"
+            className="inline-flex items-center gap-2 text-sm font-medium rounded-lg bg-white text-accent cursor-pointer transition-colors shrink-0"
         >
             {copied ? (
                 <>
