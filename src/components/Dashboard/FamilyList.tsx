@@ -2,6 +2,48 @@ import { useState } from 'react';
 import { FamilyType } from '../../utils/types';
 import StatusPill from './StatusPill';
 
+const INVITE_BASE = typeof window !== 'undefined' ? window.location.origin : 'https://bodahyg.netlify.app';
+
+const CopyInviteButton = ({ familyId }: { familyId: string }) => {
+    const [copied, setCopied] = useState(false);
+    const url = `${INVITE_BASE}/invite/${familyId}`;
+
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(url);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch {
+            setCopied(false);
+        }
+    };
+
+    return (
+        <button
+            type="button"
+            onClick={handleCopy}
+            className="inline-flex items-center gap-2 text-sm font-medium rounded-lg bg-white text-accent hover:bg-accent/90 transition-colors shrink-0"
+        >
+            {copied ? (
+                <>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Copiado
+                </>
+            ) : (
+                <>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    Copiar enlace de invitación
+                </>
+            )}
+        </button>
+    );
+};
+
 interface RsvpData {
     id: string;
     familyName: string;
@@ -125,10 +167,13 @@ const FamilyList = ({ families, rsvpData }: FamilyListProps) => {
                 <div className="divide-y divide-gray-200">
                     {filteredFamilies.map(([id, family]) => (
                         <div key={id} className="py-4 px-5 md:px-10 hover:bg-gray-50 font-secondary">
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-4 gap-2 mb-10">
+                                <h3 className="text-xl font-medium text-gray-900">{family.name}</h3>
+                                <div className="md:block">
+                                    <CopyInviteButton familyId={id} />
+                                </div>
+                            </div>
                             <div>
-                                <h3 className="text-xl font-medium text-gray-900 mb-3">{family.name}</h3>
-
-                                {/* List of members with individual status */}
                                 <div className="space-y-2 mb-3">
                                     {family.members.map((member) => (
                                         <div key={member} className="flex items-center justify-between pl-1 md:pl-4">
