@@ -72,7 +72,7 @@ const Dashboard = () => {
     return (
       <div className="min-h-screen bg-bg-secondary flex items-center justify-center p-6">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-primary text-center mb-6">Dashboard</h1>
+          <h1 className="text-3xl font-secondary text-center mb-6">Dashboard</h1>
           <form onSubmit={handlePasswordSubmit} className="space-y-4">
             <div>
               <input
@@ -102,7 +102,7 @@ const Dashboard = () => {
     return (
       <div className="min-h-screen bg-accent p-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-primary mb-8">Cargando...</h1>
+          <h1 className="text-4xl font-secondary mb-8">Cargando...</h1>
         </div>
       </div>
     );
@@ -111,7 +111,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-bg-secondary p-6">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-primary mb-8">Dashboard de Invitados</h1>
+        <h1 className="text-4xl font-secondary mb-8">Dashboard de Invitados</h1>
         <SearchBar value={searchQuery} onChange={setSearchQuery} />
         <FamilyList families={filteredGuests} rsvpData={rsvpData} />
       </div>
