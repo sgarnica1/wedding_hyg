@@ -86,7 +86,7 @@ const Invite = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.6 }}
-        className='text-white font-secondary text-xs md:text-sm text-center px-4 mt-6 max-w-[500px] font-light'
+        className='text-white font-primary text-sm md:text-md text-center px-4 mt-6 max-w-[500px] font-light'
       >
         Adoramos a tus pequeños, sin embargo, por la naturaleza del evento y normativas del lugar este evento está destinado solo para adultos ¡Esperamos tu comprensión!
       </motion.p>

@@ -6,6 +6,7 @@ import Invite from '../components/Invite'
 import Itinerary from '../components/Itinerary'
 import DressCodeGifts from '../components/DressCodeGifts'
 import Map from '../components/Map'
+import Verse from '../components/Verse'
 import BackToTop from '../components/BackToTop'
 import NotFound from './NotFound'
 import MobileOnly from '../components/MobileOnly'
@@ -28,6 +29,7 @@ const Home = () => {
         <DressCodeGifts />
         <Invite />
         <Map />
+        <Verse />
         <BackToTop />
       </div>
     </MobileOnly>

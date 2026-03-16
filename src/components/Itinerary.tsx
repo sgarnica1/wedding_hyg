@@ -6,7 +6,7 @@ const Itinerary = () => {
 
   const acts = [
     {
-      title: 'PRIMER ACTO',
+      title: 'El lazo que Dios unió',
       location: 'Hotel Misión Juriquilla',
       events: [
         { time: '4:00 PM', description: 'Bienvenida' },
@@ -14,7 +14,7 @@ const Itinerary = () => {
       ]
     },
     {
-      title: 'SEGUNDO ACTO',
+      title: 'Recepción fiesta',
       location: 'Salón Casa Mila',
       events: [
         { time: '6:00 PM', description: 'Recepción' },
