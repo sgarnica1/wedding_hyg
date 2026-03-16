@@ -18,6 +18,14 @@ const Invite = () => {
     return <></>
   }
 
+  const isSingle = familyMembers.length === 1
+  const inviteLine = isSingle
+    ? 'Nos complace invitarte a celebrar con nosotros'
+    : 'Nos complace invitarlos a celebrar con nosotros'
+  const confirmLine = isSingle
+    ? 'Favor de confirmar tu asistencia antes del'
+    : 'Favor de confirmar su asistencia antes del'
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -45,7 +53,7 @@ const Invite = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className='text-accent font-primary text-sm md:text-base mb-4 text-center font-semibold uppercase text-shadow-sm'
         >
-          Nos complace invitarlos a celebrar con nosotros
+          {inviteLine}
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +86,7 @@ const Invite = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className='text-accent font-primary text-xs md:text-sm text-center font-semibold uppercase'
         >
-          Favor de confirmar su asistencia antes del <span className='font-medium'>30 de marzo</span>
+          {confirmLine} <span className='font-medium'>30 de marzo</span>
         </motion.p>
       </motion.div>
       <motion.p
