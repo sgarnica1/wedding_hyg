@@ -88,7 +88,7 @@ const Dashboard = () => {
             )}
             <button
               type="submit"
-              className="w-full bg-bg-primary text-white py-3 px-4 rounded-lg hover:bg-bg-primary/60 transition-colors hover:cursor-pointer"
+              className="w-full bg-accent text-white py-3 px-4 rounded-lg hover:bg-accent/60 transition-colors hover:cursor-pointer"
             >
               Acceder
             </button>
@@ -100,7 +100,7 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bg-primary p-6">
+      <div className="min-h-screen bg-accent p-6">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-primary mb-8">Cargando...</h1>
         </div>
