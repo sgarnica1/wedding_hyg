@@ -107,7 +107,7 @@ const Map = () => {
               onClick={() => setShowBedfordImage(true)}
               className="text-accent font-secondary text-sm md:text-base text-center underline hover:opacity-80 transition mt-10 font-normal cursor-pointer bg-transparent border-none"
             >
-              Click aquí para conocer las tarifas por convenio
+              Ver tarifas por convenio
             </motion.button>
           </motion.div>
 
@@ -136,7 +136,7 @@ const Map = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowQueretaroModal(true)}
-              className="text-accent font-secondary text-sm md:text-base text-center underline hover:opacity-80 transition font-normal cursor-pointer bg-transparent border-none"
+              className="text-accent font-secondary text-sm md:text-base text-center underline hover:opacity-80 transition mt-10 font-normal cursor-pointer bg-transparent border-none"
             >
               Ver tarifas por convenio
             </motion.button>
