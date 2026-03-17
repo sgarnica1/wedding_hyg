@@ -7,7 +7,7 @@ export const GUESTS: GuestsType = {
   },
   "gonzalo-de-la-vega-y-familia": {
     name: "Gonzalo de la Vega y Familia",
-    members: ["Gonzalo de la Vega", "Mónica Robles", "Mónica de la Vega", "Mónica de la Vega +1"],
+    members: ["Gonzalo de la Vega", "Mónica Robles", "Mónica de la Vega +1"],
   },
   "roberto-islas-y-familia": {
     name: "Roberto Islas y familia",
@@ -27,7 +27,7 @@ export const GUESTS: GuestsType = {
   },
   "luis-alejandro-robles-y-familia": {
     name: "Luis Alejandro Robles y Familia",
-    members: ["Luis Alejandro Robles", "Olivia Ramos", "Danna Robles", "José Robles"],
+    members: ["Luis Alejandro Robles", "Olivia Ramos", "Danna Robles", "José Robles +1"],
   },
   "marcos-castrejon-y-familia": {
     name: "Marcos Castrejón y Familia",
@@ -59,7 +59,7 @@ export const GUESTS: GuestsType = {
   },
   "hernan-nuno-y-familia": {
     name: "Hernán Nuño y Familia",
-    members: ["Hernán Nuño", "Emir Pineda", "Hernán Nuño Pineda", "Daniel Nuño", "Pineda"],
+    members: ["Hernán Nuño", "Emir Pineda", "Hernán Nuño Pineda", "Daniel Nuño Pineda"],
   },
   "maria-de-la-luz-pineda-y-familia": {
     name: "Maria de la Luz Pineda y Familia",
@@ -340,9 +340,5 @@ export const GUESTS: GuestsType = {
   "miguel-castilla": {
     name: "Miguel Castillo",
     members: ["Miguel Castillo"],
-  },
-  "enrique-magayoitia": {
-    name: "Enrique Magayoitia",
-    members: ["Enrique Magayoitia", "Cynthia de la Vega"],
   },
 }

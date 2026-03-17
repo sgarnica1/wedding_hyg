@@ -86,7 +86,7 @@ const Invite = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className='text-accent font-primary text-xs md:text-sm text-center font-semibold uppercase'
         >
-          {confirmLine} <span className='font-medium'>30 de marzo</span>
+          {confirmLine} <span className='font-medium'>30 de abril</span>
         </motion.p>
       </motion.div>
       <motion.p

@@ -123,8 +123,15 @@ const Map = () => {
               Hospedaje
             </h3>
             <p className='text-accent font-secondary text-md md:text-xl font-normal mb-8 text-center'>
-              Hotel Querétaro
+              Hotel Encore
             </p>
+            <Link
+              to="https://maps.app.goo.gl/bQ24fTUAUdejQzpz6"
+              target="_blank"
+              className="text-accent font-secondary text-sm md:text-base text-center underline hover:opacity-80 transition font-normal"
+            >
+              Ubicación
+            </Link>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
