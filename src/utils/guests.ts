@@ -2,7 +2,7 @@ import { GuestsType } from './types'
 
 export const GUESTS: GuestsType = {
   "andres-islas": {
-    name: "Andrés Islas",
+    name: "Andrés Islas & Laura Ortiz",
     members: ["Andrés Islas", "Laura Ortiz"],
   },
   "gonzalo-de-la-vega-y-familia": {
@@ -53,8 +53,8 @@ export const GUESTS: GuestsType = {
     name: "Fernando Pineda",
     members: ["Fernando Pineda"],
   },
-  "jose-luis-celis-y-familia": {
-    name: "Jose Luis Celis y Familia",
+  "jose-luis-celis-y-mayra-jimenez": {
+    name: "Jose Luis Celis & Mayra Jimenez",
     members: ["Jose Luis Celis", "Mayra Jimenez"],
   },
   "hernan-nuno-y-familia": {
@@ -329,9 +329,9 @@ export const GUESTS: GuestsType = {
     name: "Matias Rivero",
     members: ["Matias Rivero"],
   },
-  "claudia-arana": {
-    name: "Claudia Arana",
-    members: ["Claudia Arana"],
+  "pedro-jimenez": {
+    name: "Pedro Jiménez",
+    members: ["Pedro Jiménez"],
   },
   "cristian-vargas": {
     name: "Cristian Vargas",
@@ -340,5 +340,9 @@ export const GUESTS: GuestsType = {
   "miguel-castilla": {
     name: "Miguel Castillo",
     members: ["Miguel Castillo"],
+  },
+  "arel-mondragon": {
+    name: "Arel Mondragon & Ximena Leyva",
+    members: ["Arel Mondragon", "Ximena Leyva"],
   },
 }
