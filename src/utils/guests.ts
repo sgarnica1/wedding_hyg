@@ -221,9 +221,9 @@ export const GUESTS: GuestsType = {
     name: "Ana Teresa Garay",
     members: ["Ana Teresa Garay"],
   },
-  "ana-paula-coutino-y-familia": {
-    name: "Ana Paula Coutiño y Familia",
-    members: ["Ana Paula Coutiño", "Guillermo Coutino", "Coquis Zenteno", "Alejandra Coutiño", "Jorge Leon"],
+  "ana-paula-guillermo-coquis": {
+    name: "Ana Paula, Guillermo & Coquis",
+    members: ["Ana Paula Coutiño", "Guillermo Coutino", "Coquis Zenteno"],
   },
   "familia-bracamontes-larranaga": {
     name: "Familia Bracamontes Larrañaga",
